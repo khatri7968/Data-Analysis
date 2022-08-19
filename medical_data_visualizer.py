@@ -4,10 +4,22 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Import data
-df = None
+df = pd.read_csv("medical_examination.csv")
+print(df)
 
 # Add 'overweight' column
-df['overweight'] = None
+# Add an overweight column to the data. To determine if a person is overweight, first calculate their BMI by dividing
+# their weight in kilograms by the square of their height in meters. If that value is > 25 then the person is overweight.
+# Use the value 0 for NOT overweight and the value 1 for overweight.
+
+overweight = df['weight']/(df['height']*df['height']/10000)
+
+df['overweight'] = overweight > 25
+
+df.replace({False: 0, True: 1}, inplace=True)
+
+print(df["overweight"])
+
 
 
 # Normalize data by making 0 always good and 1 always bad. If the value of 'cholesterol' or 'gluc' is 1, make the value 0. If the value is more than 1, make the value 1.
@@ -50,3 +62,7 @@ def draw_heat_map():
     # Do not modify the next two lines
     fig.savefig('heatmap.png')
     return fig
+
+if __name__ == "__main__":
+    pass
+
