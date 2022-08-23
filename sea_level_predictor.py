@@ -9,7 +9,7 @@ def draw_plot():
     df = pd.read_csv("epa-sea-level.csv")
 
     # Create scatter plot Use matplotlib to create a scatter plot using the Year column as the x - axis and the
-    # CSIRO Adjusted Sea Level column as the y - axis.
+    # CSIRO Adjusted Sea Level column as the y-axis.
     fig, ax = plt.subplots()
     plt.scatter(df['Year'], df['CSIRO Adjusted Sea Level'])
 
